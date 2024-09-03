@@ -1,66 +1,39 @@
 body {
-    font-family: 'Montserrat', sans-serif;
-    background-color: #121212; /* Fondo negro */
-    color: #f5f5f5; /* Texto blanco/gris claro */
-    text-align: center;
-    padding: 20px;
-    margin: 0;
-    height: 100vh; /* Altura completa de la ventana */
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh;
+    margin: 0;
 }
 
 .container {
-    max-width: 500px;
-    background-color: #1e1e1e; /* Fondo gris oscuro */
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Sombra oscura */
     text-align: center;
 }
 
-#streak-container {
-    margin: 20px 0;
-    position: relative;
-}
-
-#streak-image {
+#racha-image {
     width: 100px;
-    height: auto;
-    animation: flame 1s infinite alternate;
+    height: 100px;
+    margin-bottom: 20px;
 }
 
-@keyframes flame {
-    0% { transform: scale(1); }
-    100% { transform: scale(1.1); }
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
 
 button {
-    background-color: #ff3d00; /* Rojo brillante */
-    color: #fff; /* Texto blanco */
+    background-color: #c00;
     border: none;
-    padding: 12px 24px;
-    font-size: 18px;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
     cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease; /* Transición suave */
-    margin-top: 15px;
 }
 
 button:hover {
-    background-color: #d32f2f; /* Rojo más oscuro al pasar el ratón */
-}
-
-#streak-status {
-    margin-top: 20px;
-    font-weight: bold;
-    color: #ff3d00; /* Texto en rojo brillante */
-    display: none; /* Oculto por defecto */
-}
-
-#streak-text {
-    font-size: 20px;
-    margin-top: 15px;
-    color: #f5f5f5; /* Texto blanco/gris claro */
+    background-color: #a00;
 }
