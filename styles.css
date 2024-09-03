@@ -19,6 +19,11 @@ body {
     margin-bottom: 20px;
 }
 
+#racha-counter {
+    font-size: 20px;
+    margin: 10px 0;
+}
+
 .buttons {
     display: flex;
     justify-content: center;
