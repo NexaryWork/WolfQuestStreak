@@ -14,6 +14,7 @@ function loadStreakData() {
         streakData = JSON.parse(savedData);
     }
     updateStreakDisplay();
+    hideStreakStatus();  // Ocultar el estado al cargar
 }
 
 // Función para actualizar la visualización de la racha
@@ -26,6 +27,7 @@ function updateStreakDisplay() {
     if (diff >= oneDay) {
         streakData.streak = 0;
         streakStatus.textContent = '¡Racha perdida!';
+        streakStatus.style.display = 'block';  // Mostrar el estado
     }
 
     streakCountDisplay.textContent = streakData.streak;
@@ -39,12 +41,14 @@ function maintainStreak() {
 
     if (diff < oneDay) {
         streakStatus.textContent = '¡Ya has mantenido tu racha hoy!';
+        streakStatus.style.display = 'block';  // Mostrar el estado
         return;
     }
 
     streakData.streak += 1;
     streakData.lastUpdated = now;
     streakStatus.textContent = '¡Racha mantenida!';
+    streakStatus.style.display = 'block';  // Mostrar el estado
 
     // Actualizar visualización y guardar los datos
     updateStreakDisplay();
@@ -54,6 +58,11 @@ function maintainStreak() {
 // Función para guardar los datos de la racha en localStorage
 function saveStreakData() {
     localStorage.setItem('streakData', JSON.stringify(streakData));
+}
+
+// Función para ocultar el estado de la racha
+function hideStreakStatus() {
+    streakStatus.style.display = 'none';
 }
 
 // Evento al hacer clic en el botón de mantener racha
