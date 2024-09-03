@@ -1,6 +1,7 @@
 const streakButton = document.getElementById('streak-button');
 const streakCountDisplay = document.getElementById('streak-count');
 const streakStatus = document.getElementById('streak-status');
+const streakImage = document.getElementById('streak-image');
 
 let streakData = {
     streak: 0,
@@ -28,6 +29,9 @@ function updateStreakDisplay() {
         streakData.streak = 0;
         streakStatus.textContent = '¡Racha perdida!';
         streakStatus.style.display = 'block';  // Mostrar el estado
+        streakImage.src = 'images/Off.png'; // Cambiar a imagen de fuego apagado
+    } else {
+        streakImage.src = 'images/On.png'; // Cambiar a imagen de fuego encendido
     }
 
     streakCountDisplay.textContent = streakData.streak;
@@ -49,6 +53,9 @@ function maintainStreak() {
     streakData.lastUpdated = now;
     streakStatus.textContent = '¡Racha mantenida!';
     streakStatus.style.display = 'block';  // Mostrar el estado
+
+    // Cambiar a la imagen de fuego encendido cuando se mantiene la racha
+    streakImage.src = 'images/On.png';
 
     // Actualizar visualización y guardar los datos
     updateStreakDisplay();
