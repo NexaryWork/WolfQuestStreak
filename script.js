@@ -1,79 +1,41 @@
-const streakButton = document.getElementById('streak-button');
-const streakCountDisplay = document.getElementById('streak-count');
-const streakStatus = document.getElementById('streak-status');
-const streakImage = document.getElementById('streak-image');
+document.addEventListener('DOMContentLoaded', () => {
+    const rachaImage = document.getElementById('racha-image');
+    const continuarButton = document.getElementById('continuar');
+    const terminarButton = document.getElementById('terminar');
+    
+    const today = new Date().toDateString();
+    const lastAccessDate = localStorage.getItem('lastAccessDate');
+    const isRachaOn = localStorage.getItem('isRachaOn') === 'true';
 
-let streakData = {
-    streak: 0,
-    lastUpdated: new Date().getTime()
-};
-
-// Cargar datos de la racha desde localStorage
-function loadStreakData() {
-    const savedData = localStorage.getItem('streakData');
-    if (savedData) {
-        streakData = JSON.parse(savedData);
-    }
-    updateStreakDisplay();
-    hideStreakStatus();  // Ocultar el estado al cargar
-}
-
-// Función para actualizar la visualización de la racha
-function updateStreakDisplay() {
-    const now = new Date().getTime();
-    const diff = now - streakData.lastUpdated;
-    const oneDay = 24 * 60 * 60 * 1000;
-
-    // Si han pasado más de 24 horas sin mantener la racha, se reinicia
-    if (diff >= oneDay) {
-        streakData.streak = 0;
-        streakStatus.textContent = '¡Racha perdida!';
-        streakStatus.style.display = 'block';  // Mostrar el estado
-        streakImage.src = 'images/Off.png'; // Cambiar a imagen de fuego apagado
+    // Verificar si se puede continuar la racha
+    if (lastAccessDate === today) {
+        continuarButton.disabled = true;
     } else {
-        streakImage.src = 'images/On.png'; // Cambiar a imagen de fuego encendido
+        continuarButton.disabled = false;
     }
 
-    streakCountDisplay.textContent = streakData.streak;
-}
-
-// Función para mantener la racha
-function maintainStreak() {
-    const now = new Date().getTime();
-    const diff = now - streakData.lastUpdated;
-    const oneDay = 24 * 60 * 60 * 1000;
-
-    if (diff < oneDay) {
-        streakStatus.textContent = '¡Ya has mantenido tu racha hoy!';
-        streakStatus.style.display = 'block';  // Mostrar el estado
-        return;
+    // Configurar el estado de la racha
+    if (isRachaOn) {
+        rachaImage.src = 'images/On.png';
+    } else {
+        rachaImage.src = 'images/Off.png';
     }
 
-    streakData.streak += 1;
-    streakData.lastUpdated = now;
-    streakStatus.textContent = '¡Racha mantenida!';
-    streakStatus.style.display = 'block';  // Mostrar el estado
+    continuarButton.addEventListener('click', () => {
+        if (!continuarButton.disabled) {
+            localStorage.setItem('lastAccessDate', today);
+            localStorage.setItem('isRachaOn', 'true');
+            rachaImage.src = 'images/On.png';
+            continuarButton.disabled = true;
+        }
+    });
 
-    // Cambiar a la imagen de fuego encendido cuando se mantiene la racha
-    streakImage.src = 'images/On.png';
-
-    // Actualizar visualización y guardar los datos
-    updateStreakDisplay();
-    saveStreakData();
-}
-
-// Función para guardar los datos de la racha en localStorage
-function saveStreakData() {
-    localStorage.setItem('streakData', JSON.stringify(streakData));
-}
-
-// Función para ocultar el estado de la racha
-function hideStreakStatus() {
-    streakStatus.style.display = 'none';
-}
-
-// Evento al hacer clic en el botón de mantener racha
-streakButton.addEventListener('click', maintainStreak);
-
-// Cargar los datos de la racha al cargar la página
-loadStreakData();
+    terminarButton.addEventListener('click', () => {
+        const confirmTerminate = confirm('¿Estás seguro de que quieres terminar la racha? Esta acción es irreversible.');
+        if (confirmTerminate) {
+            localStorage.setItem('isRachaOn', 'false');
+            rachaImage.src = 'images/Off.png';
+            continuarButton.disabled = false;
+        }
+    });
+});
