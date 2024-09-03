@@ -1,7 +1,6 @@
 const streakButton = document.getElementById('streak-button');
 const streakCountDisplay = document.getElementById('streak-count');
 const streakStatus = document.getElementById('streak-status');
-const streakImage = document.getElementById('streak-image'); // Selección del elemento de la imagen
 
 let streakData = {
     streak: 0,
@@ -30,7 +29,6 @@ function updateStreakDisplay() {
     }
 
     streakCountDisplay.textContent = streakData.streak;
-    updateStreakImage(); // Llamada para actualizar la imagen de la racha
 }
 
 // Función para mantener la racha
@@ -56,23 +54,6 @@ function maintainStreak() {
 // Función para guardar los datos de la racha en localStorage
 function saveStreakData() {
     localStorage.setItem('streakData', JSON.stringify(streakData));
-}
-
-// Función para actualizar la imagen de la racha según el conteo de días
-function updateStreakImage() {
-    if (streakData.streak >= 200) {
-        streakImage.src = "images/fuego200.png"; // Imagen para racha de 200 días
-    } else if (streakData.streak >= 100) {
-        streakImage.src = "images/fuego100.png"; // Imagen para racha de 100 días
-    } else if (streakData.streak >= 50) {
-        streakImage.src = "images/fuego50.png"; // Imagen para racha de 50 días
-    } else if (streakData.streak >= 25) {
-        streakImage.src = "images/fuego25.png"; // Imagen para racha de 25 días
-    } else if (streakData.streak >= 10) {
-        streakImage.src = "images/fuego10.png"; // Imagen para racha de 10 días
-    } else {
-        streakImage.src = "images/png1.png"; // Imagen predeterminada
-    }
 }
 
 // Evento al hacer clic en el botón de mantener racha
