@@ -1,8 +1,10 @@
 body {
-    background-color: black;
-    color: white;
-    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
     text-align: center;
+    margin: 0;
+    padding: 0;
 }
 
 .container {
@@ -27,10 +29,82 @@ button:hover {
 
 #seguirm {
     background-color: red;
+    color: white;
 }
 
 #resetear {
     background-color: black;
     color: red;
     border: 2px solid red;
+}
+
+.buttons {
+    margin: 20px 0;
+}
+
+.code-redeem {
+    margin: 20px 0;
+}
+
+#code-input {
+    padding: 10px;
+    font-size: 1em;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+}
+
+#redeem-button {
+    background-color: #1e90ff;
+    color: white;
+}
+
+#redeem-message {
+    margin-top: 10px;
+    font-size: 1.1em;
+}
+
+#redeem-message.success {
+    color: #2ecc71;
+}
+
+#redeem-message.error {
+    color: #e74c3c;
+}
+
+.theme-selector {
+    position: relative;
+    display: inline-block;
+}
+
+#theme-button {
+    background-color: #3498db;
+    color: white;
+}
+
+#theme-menu {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+    padding: 0;
+}
+
+#theme-menu div {
+    padding: 10px;
+    cursor: pointer;
+}
+
+#theme-menu div:hover {
+    background-color: #f1f1f1;
+}
+
+.hidden {
+    display: none;
+}
+
+.icon {
+    margin: 20px 0;
 }
