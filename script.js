@@ -102,7 +102,7 @@ window.onload = function() {
             document.getElementById('contador').innerText = racha;
             guardarRacha();
             document.getElementById('mensaje-espera').classList.add('hidden');
-            document.getElementById('icono').src = 'img/IconOn.png';
+            document.getElementById('icono').src = 'Images/IconOn.png';
         }
     });
 
@@ -112,6 +112,6 @@ window.onload = function() {
         localStorage.removeItem('racha');
         localStorage.removeItem('fecha');
         document.getElementById('mensaje-espera').classList.add('hidden');
-        document.getElementById('icono').src = 'img/IconOff.png';
+        document.getElementById('icono').src = 'Images/IconOff.png';
     });
 }
